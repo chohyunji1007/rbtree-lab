@@ -151,7 +151,7 @@ node_t *rbtree_insert(rbtree *t, const key_t key) {
   insert_node->key=key;
   insert_node->color=0; //입력 노드는 red
   
-  while(t_root!=t->nil){
+  while(t_root!=t->nil){ //bst 삽입 방식과 동일
     t_nil = t_root;
     if(insert_node->key < t_root->key)
       t_root = t_root->left;
@@ -161,7 +161,7 @@ node_t *rbtree_insert(rbtree *t, const key_t key) {
 
   insert_node->parent = t_nil;
 
-  if(t_nil == t->nil)
+  if(t_nil == t->nil) //삽입할때 아무
     t->root = insert_node;
   else if(insert_node->key < t_nil->key)
     t_nil->left = insert_node;
@@ -356,15 +356,28 @@ int rbtree_to_array(const rbtree *t, key_t *arr, const size_t n){
   return 0;
 }
 
+// void midorder_print(rbtree *t, node_t *cur){
+//   t->root = t->nil;
+//   if(cur== t->nil){
+//     return;
+//   }
+//   midorder_print(t, cur->left);
+//   printf("key: %d, color: %d, left: %d, right : %d\n", cur->key, cur->color, cur->left->key, cur->right->key);
+//   midorder_print(t, cur->right);
+//   free(cur);
+// }
 
 // int main(){
-  // rbtree *t= new_rbtree();
-  // rbtree_insert(t, 10);
-  // rbtree_insert(t, 20);
-  // rbtree_insert(t, 30);
-  // rbtree_insert(t, 40);
-  // rbtree_insert(t, 50);
-  // node_t *a=rbtree_max(t);
-  // key_t *res = calloc(6, sizeof(key_t));
-//   test_to_array_suite();
+//   rbtree *t= new_rbtree();
+//   rbtree_insert(t, 10);
+//   rbtree_insert(t, 20);
+//   rbtree_insert(t, 30);
+//   rbtree_insert(t, 40);
+//   rbtree_insert(t, 50);
+//   rbtree_insert(t, 60);
+//   rbtree_insert(t, 70);
+//   // node_t *a=rbtree_max(t);
+//   // key_t *res = calloc(6, sizeof(key_t));
+//   // test_to_array_suite();
+//   midorder_print(t, t->root);
 // }
